@@ -38,6 +38,7 @@ module PenList
             path.start_with?('/.') ||
             path.start_with?('/_') ||
             req.get? && path == '/auth/google_oauth2'
+            req.post? && path == '/'
         end
       end
     end
