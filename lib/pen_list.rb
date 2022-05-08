@@ -16,7 +16,7 @@ module PenList
       Rack::Attack.safelist("[Pen List] logged in users and defined paths are safe") do |req|
         SAFE_PREFIXES.include?(req.path.split('/')[1]) ||
           req.session[:user] ||
-          req.session[:current_user_id]
+          req.session[:current_user_id] # || don't forget the OR when adding more conditions
       end
 
       Rack::Attack.blocklist('[Pen List] Fail2Ban for common pen testing requests') do |req|
@@ -37,8 +37,8 @@ module PenList
             path.end_with?('.sql') ||
             path.start_with?('/.') ||
             path.start_with?('/_') ||
-            req.get? && path == '/auth/google_oauth2'
-            req.post? && path == '/'
+            req.get? && path == '/auth/google_oauth2' ||
+            req.post? && path == '/' # || don't forget the OR when adding more conditions
         end
       end
     end
