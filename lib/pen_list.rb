@@ -28,6 +28,7 @@ module PenList
             path.include?('servlet') ||
             path.include?('php') ||
             path.include?('admin') ||
+            path.include?('test_404_page') ||
             path.include?('.git') ||
             path.end_with?('.jsp') ||
             path.end_with?('.env') ||
