@@ -23,8 +23,11 @@ module PenList
         Rack::Attack::Fail2Ban.filter("pentesters-#{req.ip}", maxretry: 3, findtime: 10.minutes, bantime: 5.minutes) do
           path = req.path.downcase
           path.include?('/etc/passwd') ||
-            path.include?('wp-login') ||
             path.include?('wordpress') ||
+            path.include?('wp') ||
+            path.include?('bc') ||
+            path.include?('bk') ||
+            path.include?('old') ||
             path.include?('backup') ||
             path.include?('cgi-bin') ||
             path.include?('servlet') ||
