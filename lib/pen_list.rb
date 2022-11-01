@@ -34,7 +34,11 @@ module PenList
             path.include?('php') ||
             path.include?('admin') ||
             path.include?('test_404_page') ||
-            path.include?('.git') ||
+            path.include?('etc') ||
+            path.include?('git') ||
+            path.include?('meta-inf') ||
+            path.include?('exporttool') ||
+            path.include?('server-status') ||
             path.end_with?('.jsp') ||
             path.end_with?('.env') ||
             path.end_with?('.exe') ||
