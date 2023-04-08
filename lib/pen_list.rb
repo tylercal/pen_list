@@ -11,7 +11,7 @@ module PenList
     initializer "[Pen List] Rack-Attack setup", after: :add_routing_paths do |app|
 
       app.reload_routes!
-      SAFE_PREFIXES = app.routes.routes.map {|r| r.path.spec.to_s.split('(')[0].split('/')[1]}.uniq.compact.to_set - %w(auth rails assets cable *path)
+      SAFE_PREFIXES = app.routes.routes.map {|r| r.path.spec.to_s.split('(')[0].split('/')[1]}.uniq.compact.to_set - %w(auth cable *path)
 
       Rack::Attack.safelist("[Pen List] logged in users and defined paths are safe") do |req|
         SAFE_PREFIXES.include?(req.path.split('/')[1]) ||
@@ -39,6 +39,7 @@ module PenList
             path.include?('meta-inf') ||
             path.include?('exporttool') ||
             path.include?('server-status') ||
+            path.include?('public') ||
             path.end_with?('.jsp') ||
             path.end_with?('.env') ||
             path.end_with?('.exe') ||
