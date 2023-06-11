@@ -24,9 +24,9 @@ module PenList
           path = req.path.downcase
           path.include?('/etc/passwd') ||
             path.include?('wordpress') ||
-            path.include?('wp') ||
-            path.include?('bc') ||
-            path.include?('bk') ||
+            path.include?('/wp/') ||
+            path.include?('/bc/') ||
+            path.include?('/bk/') ||
             path.include?('old') ||
             path.include?('backup') ||
             path.include?('cgi-bin') ||
