@@ -11,7 +11,7 @@ module PenList
     initializer "[Pen List] Rack-Attack setup", after: :add_routing_paths do |app|
 
       app.reload_routes!
-      SAFE_PREFIXES = app.routes.routes.map {|r| r.path.spec.to_s.split('(')[0].split('/')[1]}.uniq.compact.to_set - %w(auth cable *path)
+      SAFE_PREFIXES = app.routes.routes.map {|r| r.path.spec.to_s.split('(')[0].split('/')[1]}.uniq.compact.to_set - %w(auth cable *path admin)
 
       Rack::Attack.safelist("[Pen List] logged in users and defined paths are safe") do |req|
         SAFE_PREFIXES.include?(req.path.split('/')[1]) ||
@@ -28,7 +28,10 @@ module PenList
             path.include?('wp-include') ||
             path.include?('/bc/') ||
             path.include?('/bk/') ||
+            path.include?('/api/') ||
+            path.include?('/blog/') ||
             path.include?('old') ||
+            path.include?('admin') ||
             path.include?('backup') ||
             path.include?('cgi-bin') ||
             path.include?('servlet') ||
@@ -37,15 +40,22 @@ module PenList
             path.include?('test_404_page') ||
             path.include?('etc') ||
             path.include?('git') ||
+            path.include?('telerik') ||
+            path.include?('the_ins_ru') ||
+            path.include?('credentials') ||
             path.include?('meta-inf') ||
             path.include?('exporttool') ||
             path.include?('server-status') ||
             path.include?('public') ||
+            path.include?('catalog') ||
+            path.include?('config') ||
             path.end_with?('.jsp') ||
             path.end_with?('.env') ||
             path.end_with?('.exe') ||
             path.end_with?('.txt') ||
+            path.end_with?('.cfc') ||
             path.end_with?('.xml') ||
+            path.end_with?('.gz') ||
             path.end_with?('.sql') ||
             path.start_with?('/.') ||
             path.start_with?('/_') ||
