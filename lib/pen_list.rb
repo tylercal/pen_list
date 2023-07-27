@@ -44,6 +44,7 @@ module PenList
             path.include?('config') ||
             path.include?('etc') ||
             path.include?('exporttool') ||
+            path.include?('fatmous') ||
             path.include?('getkdata') ||
             path.include?('git') ||
             path.include?('login_index') ||
@@ -53,6 +54,7 @@ module PenList
             path.include?('old') ||
             path.include?('php') ||
             path.include?('public') ||
+            path.include?('security/login') ||
             path.include?('server-status') ||
             path.include?('servlet') ||
             path.include?('telerik') ||
@@ -61,6 +63,7 @@ module PenList
             path.include?('wordpress') ||
             path.include?('wp-content') ||
             path.include?('wp-include') ||
+            path.include?('wp-json') ||
 
             path.end_with?('.cfc') ||
             path.end_with?('.do') ||
