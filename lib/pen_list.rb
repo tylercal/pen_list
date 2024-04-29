@@ -54,6 +54,7 @@ module PenList
             path.include?('old') ||
             path.include?('php') ||
             path.include?('public') ||
+            path.include?('sitemap') ||
             path.include?('security/login') ||
             path.include?('server-status') ||
             path.include?('servlet') ||
