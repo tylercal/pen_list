@@ -29,8 +29,8 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency 'rack-attack', ">= 5.0", "< 7.0"
-  spec.add_dependency 'railties', ">= 3.1", "< 8.0"
+  spec.add_dependency 'rack-attack', ">= 6.7"
+  spec.add_dependency 'railties', ">= 3.1"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html
