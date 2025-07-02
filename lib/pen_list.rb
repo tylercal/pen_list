@@ -15,6 +15,7 @@ module PenList
 
       Rack::Attack.safelist("[Pen List] logged in users and defined paths are safe") do |req|
         SAFE_PREFIXES.include?(req.path.split('/')[1]) ||
+          Rails.env.development? ||
           req.session[:user] ||
           req.session[:current_user_id] # || don't forget the OR when adding more conditions
       end
